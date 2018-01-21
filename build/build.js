@@ -32,9 +32,8 @@ webpack(webpackConfig, function (err, stats) {
     chunkModules: false
   }) + '\n\n')
 
-  console.log(chalk.cyan('  Build complete.\n'))
+  console.log(chalk.cyan('  已生成文件 dist文件夹.\n'))
   console.log(chalk.yellow(
-    '  Tip: built files are meant to be served over an HTTP server.\n' +
-    '  Opening index.html over file:// won\'t work.\n'
+    '  多页项目可以直接在 file:// 下浏览.\n'
   ))
 })
