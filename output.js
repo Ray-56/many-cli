@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-//入口文件
+// 入口文件
 let entryFiles = {};
 function eachEntryFile(dir) {
     try {

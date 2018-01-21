@@ -1,15 +1,17 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const utils = require('../config/utils');
 const config = require('../config');
 const entryFiles = require('../config/entrys'); // 获取所有入口文件配置
+const pagesArray = require('../config/htmlPages'); // html页面 pagesArray
 
 function resolve(dir) {
     return path.join(__dirname, '.', dir)
 };
 
-module.exports = {
+let webpackConf = {
     entry: entryFiles,
     output: {
         filename: 'static/js/[name].[hash].js',
@@ -84,4 +86,22 @@ module.exports = {
             }
         ]
     },
-}
+};
+
+// 遍历页面，添加配置
+pagesArray.forEach((page)=>{
+    const htmlPlugin = new HtmlWebpackPlugin({
+        template: page.template,
+        filename: page.filename,
+        chunks: [ 'vendors', page.chuckName ],
+        hash: true,
+        minify: {
+            removeComments: true,
+            collapseWhitespace: false // 删除空白符与换行符
+        }
+    });
+
+    webpackConf.plugins.push(htmlPlugin);
+});
+
+module.exports = webpackConf;

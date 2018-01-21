@@ -5,10 +5,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 // html页面 pagesArray
-const pagesArray =require('./htmlPages');
+const pagesArray = require('./htmlPages');
 
 let base_plugin = [
-    new CleanWebpackPlugin(['dist']),    
+    new CleanWebpackPlugin(
+        ['./dist']
+    ),    
     new webpack.optimize.CommonsChunkPlugin({
         name: 'vendors',
         chunks: [ 'page1' ], // 提取公用模块

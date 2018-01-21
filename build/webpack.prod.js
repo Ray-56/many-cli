@@ -7,7 +7,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 module.exports = merge(base, {
     devtool: 'scouce-map',
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(['./dist']),
         new UglifyJSPlugin({
             sourceMap: true
         }),
