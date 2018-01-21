@@ -1,0 +1,60 @@
+{
+  "name": "many-cli",
+  "version": "1.0.0",
+  "description": "多页项目脚手架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server",
+    "dev": "webpack-dev-server --open --config ./build/webpack.dev.js",
+    "build1": "webpack --config ./build/webpack.prod.js",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://guokangf@github.com/guokangf/many-cli.git"
+  },
+  "author": "f",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guokangf/many-cli/issues"
+  },
+  "homepage": "https://github.com/guokangf/many-cli#readme",
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-env": "^1.3.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "clean-webpack-plugin": "^0.1.17",
+    "css-loader": "^0.28.0",
+    "csv-loader": "^2.1.1",
+    "express": "^4.16.2",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.4",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "http-proxy-middleware": "^0.17.3",
+    "less": "^3.0.0-alpha.3",
+    "less-loader": "^4.0.5",
+    "node-sass": "^4.5.3",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "uglifyjs-webpack-plugin": "^1.1.6",
+    "url-loader": "^0.5.8",
+    "webpack": "^3.6.0",
+    "webpack-bundle-analyzer": "^2.9.0",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.18.2",
+    "webpack-merge": "^4.1.0",
+    "xml-loader": "^1.2.1"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4"
+  }
+}
