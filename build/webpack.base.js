@@ -35,6 +35,7 @@ let webpackConf = {
             disable: false,
             allChunks: true
         }),
+        new webpack.HotModuleReplacementPlugin()
     ],
     module: {
         rules: [

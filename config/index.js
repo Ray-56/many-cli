@@ -27,16 +27,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: { // 代理 可以解决跨域问题
-      /*'/ws': {
-        target: 'ws://52.80.4.119:6001',
-        pathRewrite: {'^/ws' : ' '},
-        changeOrigin: true
-      },*/
-      '/api': {
+      /* '/api': {
         target: 'http://52.80.4.119:6001/',
         pathRewrite: {'^/api' : '/api'},
         changeOrigin: true
-      }
+      } */
     },
     cssSourceMap: false
   }

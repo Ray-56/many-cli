@@ -1,1 +1,1 @@
-console.log(99999)
+console.log(process.env.NODE_ENV)

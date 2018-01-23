@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "dev": "webpack-dev-server --open --config ./build/webpack.dev.js",
+    "dev1": "webpack-dev-server --open --config ./build/webpack.dev.js",
     "build1": "webpack --config ./build/webpack.prod.js",
+    "dev": "node build/dev-server.js",
     "build": "node build/build.js"
   },
   "repository": {
@@ -32,6 +33,7 @@
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.0",
     "csv-loader": "^2.1.1",
+    "eventsource-polyfill": "^0.9.6",
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
