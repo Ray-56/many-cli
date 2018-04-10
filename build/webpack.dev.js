@@ -21,6 +21,7 @@ module.exports = merge(base, {
         new webpack.DefinePlugin({
             'process.env': config.dev.env
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin()
     ],
 })

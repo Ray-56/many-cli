@@ -24,7 +24,7 @@ var compiler = webpack(webpackConfig);
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,
-    quiet: true
+    quiet: true, // 向控制台显示任何内容
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
