@@ -28,13 +28,15 @@ let pagesArray = [];
 function eachFile(dir) {
     try {
         fs.readdirSync(dir).forEach(function (file) {
-            let fileObj = {};
-            let filePath = dir + '/' + file;
-            let chunkName = path.basename(file, '.html');
-            fileObj['filename'] = file;
-            fileObj['template'] = filePath;
-            fileObj['chuckName'] = chunkName;
-            pagesArray.push(fileObj);
+            if (file.indexOf('.html') > -1) {
+                let fileObj = {};
+                let filePath = dir + '/' + file;
+                let chunkName = path.basename(file, '.html');
+                fileObj['filename'] = file;
+                fileObj['template'] = filePath;
+                fileObj['chuckName'] = chunkName;
+                pagesArray.push(fileObj);
+            };
         })
     } catch (e) {
 

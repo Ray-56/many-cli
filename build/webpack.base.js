@@ -35,7 +35,13 @@ let webpackConf = {
             disable: false,
             allChunks: true
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            'root.jQuery': 'jquery'
+        })
     ],
     module: {
         rules: [
