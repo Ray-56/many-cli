@@ -1,1 +1,0 @@
-module.exports=[{"filename":"index.html","template":"./src/pages/index.html","chuckName":"index"},{"filename":"page1.html","template":"./src/pages/page1.html","chuckName":"page1"}]

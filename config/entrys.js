@@ -1,1 +1,0 @@
-module.exports={"index":"./src/js/index.js","page1":"./src/js/page1.js"}
