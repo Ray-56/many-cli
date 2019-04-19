@@ -1,9 +1,8 @@
 # 基于webpack4的多页脚手架
 
-## yarn
-
-使用`yarn`代替`npm`。
+## 注意点
 
 ```shell
-npm i -g yarn
+npm run dev     # 使用 webpack-dev-middleware 插件
+npm run start   # 使用 webpack-dev-server
 ```
