@@ -1,14 +1,16 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",
+        "baseUrl": "./src",
+        "outDir": "./dist",
         "noImplicitAny": true,
         "module": "es6",
         "target": "es5",
-        "allowJs": true
+        "allowJs": true,
+        "removeComments": true, // 删除注释
     },
-    "include": [
-        "src/"
-    ],
+    // "include": [
+    //     "src/"
+    // ],
     "exclude": [
         "node_modules",
     ]

@@ -1,7 +1,7 @@
 const path = require('path');
+const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const glob = require('glob');
 const getEntry = require('./getEntry');
 
 const entry = getEntry();
@@ -10,21 +10,50 @@ module.exports = {
     //     app: './src/index.ts',
     // },
     entry: entry,
+    output: {
+        filename: '[name].bundle.js',
+        chunkFilename: '[name].chunk.js',
+        path: path.resolve(__dirname, '../dist'),
+    },
     resolve: {
-        alias: {
-            '@': path.resolve(__dirname, '../src'),
-        }
+        extensions:['.ts', '.tsx', '.js', '.jsx'],
+        modules: [
+            path.resolve(__dirname, '../src'),
+            path.resolve('node_modules'),
+        ]
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    chunks: 'all',
+                    minChunks: 2,
+                    maxInitialRequests: 5,
+                    // minSize: 0, // 文件最小打包体积，单位byte，默认30000。会将 console 剔除
+                },
+                vendor: { // 提出第三方模块
+                    test: /node_modules/,
+                    chunks: 'initial',
+                    name: 'vendor',
+                    priority: 10, // 优先
+                    enforce: true,
+                }
+            }
+        },
+
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Prodoction',
+            // title: 'Prodoction',
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
         })
+        // new webpack.optimize.RuntimeChunkPlugin({
+        //     name: 'common'
+        // })
     ],
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, '../dist'),
-    },
     module: {
         rules: [
             {
@@ -36,7 +65,8 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     'style-loader',
-                    'css-loader'
+                    'css-loader',
+                    'postcss-loader',
                 ]
             },
             {
@@ -45,6 +75,7 @@ module.exports = {
                     'style-loader',
                     'css-loader',
                     'sass-loader',
+                    'postcss-loader',
                 ]
             },
             {
@@ -77,8 +108,6 @@ Object.keys(entry).forEach(ele => {
         chunks: ['vendor', 'common', ele]
     });
 });
-
-console.log(htmlArray);
 
 function getHtmlConfig(name, chunks) {
     return {

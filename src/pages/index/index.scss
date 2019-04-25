@@ -1,3 +1,20 @@
 h1 {
-    color: blue;
+    color: green;
+}
+section {
+    width: 600px;
+    height: 300px;
+    text-align: center;
+    color: #fff;
+    font-size: 5em;
+    background: red;
+    &:nth-child(2n) {
+        background: green;
+    }
+    &:hover {
+        border: 10px solid #ccc;
+    }
+    &+section {
+        margin-top: 10px;
+    }
 }

@@ -18,7 +18,7 @@ module.exports = merge(common, {
         overlay: true, // 浏览页面上显示错误
         open: true, // 开启浏览器
         stats: 'errors-only',
-        hot: true, // 开启热更新
+        // hot: true, // 开启热更新
         proxy: {}
     }
 });

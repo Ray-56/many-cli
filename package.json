@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/guokangf/many-cli#readme",
   "devDependencies": {
+    "autoprefixer": "^9.5.1",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
     "express": "^4.16.4",
@@ -31,6 +32,7 @@
     "html-webpack-plugin": "^3.2.0",
     "json-loader": "^0.5.7",
     "node-sass": "^4.11.0",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "ts-loader": "^5.3.3",
@@ -43,6 +45,8 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "@types/node": "^11.13.5"
+    "@types/jquery": "^3.3.29",
+    "@types/node": "^11.13.5",
+    "jquery": "^3.4.0"
   }
 }
