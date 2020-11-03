@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const getEntry = require('./getEntry');
 
@@ -10,11 +10,11 @@ module.exports = {
     //     app: './src/index.ts',
     // },
     entry: entry,
-    output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[name].chunk.js',
-        path: path.resolve(__dirname, '../dist'),
-    },
+    // output: {
+    //     filename: '[name].bundle.js',
+    //     chunkFilename: '[name].chunk.js',
+    //     path: path.resolve(__dirname, '../dist'),
+    // },
     resolve: {
         extensions:['.ts', '.tsx', '.js', '.jsx'],
         modules: [
@@ -42,18 +42,6 @@ module.exports = {
         },
 
     },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            // title: 'Prodoction',
-        }),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-        })
-        // new webpack.optimize.RuntimeChunkPlugin({
-        //     name: 'common'
-        // })
-    ],
     module: {
         rules: [
             {
@@ -64,24 +52,48 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
+                    // 'style-loader',
                     'css-loader',
-                    'postcss-loader',
+                    // 'postcss-loader',
                 ]
             },
             {
                 test: /\.scss$/,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
+                    // 'style-loader',
                     'css-loader',
                     'sass-loader',
-                    'postcss-loader',
+                    // 'postcss-loader',
                 ]
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|svg|jpg|jpeg|gif)$/,
                 use: [
-                    'file-loader'
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            name: function(file) {
+                                console.log(file);
+                                var reg = /image\\(.*)\\([^\\]*)\.(png|svg|jpg|jpeg|gif)$/;
+                                var dirStr = reg.exec(file);
+                                // console.log('url-loader-image ->', dirStr);
+                                // if (dirStr) {
+                                //     dirStr = dirStr[1];
+                                // }
+                                dirStr = dirStr ? dirStr[1].replace(/\\/g,'/') + '/' : ''; 
+                                return dirStr + '[name].[ext]';
+                            },
+                            // name: '[name].[ext]',
+                            limit: 5 * 1024, //小于这个时将会已base64位图片打包处理
+                            // outputPath: '/dist/images/',
+                            // publicPath: function(url) {
+                            //     console.log(url);
+                            //     return path.resolve(__dirname,'dist/image',url).replace(/\\/g,'/')
+                            // },
+                        }
+                    }
                 ]
             },
             {
@@ -97,7 +109,16 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            // title: 'Prodoction',
+        }),
+        new MiniCssExtractPlugin(),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+        })
+    ]
 }
 
 const htmlArray = [];
